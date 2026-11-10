@@ -125,3 +125,16 @@ dd{font-weight:700;color:#2b1d25}
 .dark .sub{color:#f3e2c8}
 .cd b{color:#fffaf0}.cd span{color:#f3e2c8;font-weight:500}
 .tn h3,.tn b{color:#fffaf0}.tn b{font-weight:700}.tn p{font-weight:400;color:#f6e9d4}
+
+/* ===== CALENDAR ===== */
+.cal{max-width:320px;margin:30px auto 8px;border:1px solid rgba(240,207,138,.5);border-radius:14px;padding:18px 14px;background:rgba(255,255,255,.06)}
+.cal h4{font:700 26px var(--serif);color:#fffaf0;margin-bottom:12px;letter-spacing:.04em}
+.cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal-g b{font-size:11px;letter-spacing:.1em;color:#f0cf8a;font-weight:500}
+.cal-g i{font-style:normal;font-size:15px;line-height:38px;height:38px;color:#fff3df;position:relative}
+.cal-g i.on{font-weight:700;color:#fff}
+.cal-g i.on::before{content:"";position:absolute;inset:0;margin:auto;width:38px;height:38px;border:2px solid #f0cf8a;border-radius:50%;background:rgba(240,207,138,.2);opacity:0}
+.cal.in i.on::before{animation:ring 1.2s .6s ease-out forwards}
+@keyframes ring{from{transform:scale(1.7);opacity:0}to{transform:none;opacity:1}}
+.dark .btn{color:#fff3df;border-color:#f0cf8a}
+.dark .btn:hover,.dark .btn:active{background:#f0cf8a;color:#3f1647}
