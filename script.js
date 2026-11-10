@@ -54,3 +54,27 @@ function tick() {
   if (t === 0) $("#cdnote").textContent = "Today we say “I do”";
 }
 tick(); setInterval(tick, 1000);
+
+/* ===== CALENDAR + GOOGLE CALENDAR LINK (EDIT the EVENT details) ===== */
+const EVENT = {
+  title: "Isaac Francis & Pavithra - Wedding",
+  start: "20270118T153000",   // 18 Jan 2027, 3:30 pm
+  end:   "20270118T213000",   // 9:30 pm (change if you like)
+  location: "CSI St. George's Cathedral, Gopalapuram, Chennai 600086",
+  details: "Wedding ceremony from 3.30 pm at CSI St. George's Cathedral. Reception from 6.30 pm at CSI Lite Auditorium, Kilpauk, Chennai 600010."
+};
+$("#addCal").href = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+  "&text=" + encodeURIComponent(EVENT.title) +
+  "&dates=" + EVENT.start + "/" + EVENT.end + "&ctz=Asia/Kolkata" +
+  "&location=" + encodeURIComponent(EVENT.location) +
+  "&details=" + encodeURIComponent(EVENT.details);
+
+(function () {
+  const y = +EVENT.start.slice(0, 4), m = +EVENT.start.slice(4, 6) - 1, d = +EVENT.start.slice(6, 8);
+  const first = new Date(y, m, 1).getDay(), days = new Date(y, m + 1, 0).getDate();
+  let g = "<h4>" + new Date(y, m, 1).toLocaleString("en-US", { month: "long" }) + " " + y + "</h4><div class='cal-g'>";
+  ["S", "M", "T", "W", "T", "F", "S"].forEach(x => g += "<b>" + x + "</b>");
+  for (let i = 0; i < first; i++) g += "<i></i>";
+  for (let n = 1; n <= days; n++) g += "<i" + (n === d ? " class='on'" : "") + ">" + n + "</i>";
+  $("#cal").innerHTML = g + "</div>";
+})();
